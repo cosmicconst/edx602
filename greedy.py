@@ -15,17 +15,17 @@ class Item(object):
         return ("Name: " + self.getName() + " Cost: " + str(self.getCost()) + " Value: " + str(self.getValue()))
 
 
-food = ["wine","beer","pizza","burger","fries","coke","apple","donut"]
-value = [89,90,95,100, 90,79,90,10]
-calories = [123,154,258,354,365,150,95,195]
+food = ["clock","painting","radio","vase","book","computer"]
+value = [175,90,20,50,10,200]
+weight = [10,9,4,2,1,20]
 
-def buildmenu(food,value,calories):
+def buildmenu(food,value,weight):
     menu = []
     for i in range(len(food)):
-        menu.append(Item(food[i],value[i],calories[i]))
+        menu.append(Item(food[i],value[i],weight[i]))
     return menu
 
-items = buildmenu(food,value,calories)
+items = buildmenu(food,value,weight)
 for item in items:
     print(item)
 
@@ -52,11 +52,11 @@ def testgreedy(items, constraint, functionkey):
 
 
 def testgreedys(items,maxUnits):
-    print('Use greedy by Value to allocate ',str(maxUnits), ' calories')
+    print('Use greedy by Value to allocate ',str(maxUnits), ' weight')
     testgreedy(items,maxUnits,Item.getValue)
-    print('Use greedy by Cost to allocate ',str(maxUnits),' calories')
+    print('Use greedy by Cost to allocate ',str(maxUnits),' weight')
     testgreedy(items,maxUnits, lambda x: 1/Item.getCost(x))
-    print("Use greedy by Density to allocate ", str(maxUnits), " calories")
+    print("Use greedy by Density to allocate ", str(maxUnits), " weight")
     testgreedy(items,maxUnits,Item.getDensity)
 
-testgreedys(items,750)
+testgreedys(items,20)
